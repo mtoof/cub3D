@@ -6,13 +6,14 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:24:51 by mtoof             #+#    #+#             */
-/*   Updated: 2023/09/25 17:03:24 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 13:19:13 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3d.h"
 
-void	my_mlx_pixel_put(t_cub3d *data, double width, double height, unsigned int color)
+void	my_mlx_pixel_put(t_cub3d *data, double width, \
+						double height, unsigned int color)
 {
 	char	*dst;
 	int		y;

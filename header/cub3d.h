@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/26 12:21:32 by vvu              ###   ########.fr       */
+/*   Updated: 2023/09/26 13:29:13 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ typedef struct s_cub3d
 }					t_cub3d;
 
 // init.c:
-void				init_data(t_cub3d *data);
+int					init_data(t_cub3d *data);
 
 // free.c:
 void				free_array(char **array);
@@ -183,10 +183,10 @@ void				draw_2d_map(t_cub3d *data);
 void				draw_2d_player(t_cub3d *data);
 void				draw_2d_direction(t_cub3d *data);
 void				draw_rayline(t_cub3d *data);
-void				init_window(t_cub3d *data);
+int					init_window(t_cub3d *data);
 void				render_game(t_cub3d *data);
 void				render_background(t_cub3d *data);
-void				error_in_img(t_cub3d *data, int flag);
+int					error_in_img(t_cub3d *data, int flag);
 void				bresenham(t_point p1, t_point p2, \
 					t_cub3d *data, t_line line);
 
@@ -195,7 +195,9 @@ void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
 					unsigned int color);
 
 //key_events
-int					key_handler(int key, t_cub3d *data);
-void				move(t_cub3d *data, double height, double width);
 void				hook_keys_loop(t_cub3d *data);
+void				move_keys(t_cub3d *data, double player_rad_angle);
+void				arrow_keys(t_cub3d *data);
+void				update_player_coordinates(t_cub3d *data);
+
 #endif
