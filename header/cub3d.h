@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
+/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:27:23 by atoof             #+#    #+#             */
-/*   Updated: 2023/09/29 12:36:39 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/07 17:29:17 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@
 # define WEST 4
 # define TRUE 1
 # define FALSE 0
-# define X 1920
-# define Y 1080
+# define WIDTH 1920
+# define HEIGHT 1080
 
-# define BLOCK_SIZE 30
+# define BLOCK_SIZE 20
 # define PLAYER_SIZE 5
-# define SPEED 0.8
-# define ANGLE 5.0
+# define SPEED 5
+# define ANGLE 10
 # define FOV 60
 
 typedef struct s_ray
@@ -53,7 +53,11 @@ typedef struct s_ray
 	double			p_delta_y;
 	int				steps_x;
 	int				steps_y;
-
+	double			center_angle;
+	double			half_fov;
+	double			start_angle;
+	double			end_angle;
+	double			angle_increment;
 }					t_ray;
 
 typedef struct s_texture
@@ -94,6 +98,7 @@ typedef struct s_map
 typedef struct s_img
 {
 	void			*img_ptr;
+	void			*n_wall;
 	char			*addr;
 	int				bits_per_pixel;
 	int				line_length;
@@ -117,12 +122,17 @@ typedef struct s_player
 typedef struct s_cub3d
 {
 	bool			keys[125];
+	unsigned int	ceil_color;
+	unsigned int	floor_color;
 	int				color[3];
 	int				found_zero;
 	int				found_space;
 	int				width;
 	int				height;
 	int				fd;
+	double			minimap_scale;
+	int				minimap_offset_x;
+	int				minimap_offset_y;
 	int				player_number;
 	char			player_direction;
 	void			*mlx_ptr;
@@ -176,7 +186,7 @@ int					check_amount_player(char **map, int index, t_cub3d *d);
 double				degree_to_rad(double angle);
 long long			ft_atoll(const char *str);
 char				**ft_split_spaces(char *str);
-void				set_player_x_y(t_cub3d *data);
+void				set_color_to_floor_ceiling(t_cub3d *data);
 int					mouse_handler(t_cub3d *data);
 int					check_character(char c, int flag);
 int					check_valid_line(char **map, int flag);
@@ -199,6 +209,8 @@ void				dda_algorithm(t_point p1, t_point p2, t_cub3d *data, \
 //image_handler
 void				my_mlx_pixel_put(t_cub3d *data, double x, double y, \
 					unsigned int color);
+void				my_mlx_pixel_put_mini(t_cub3d *data, double width, \
+					double height, unsigned int color);
 
 //key_events
 void				hook_keys_loop(t_cub3d *data);
@@ -206,5 +218,13 @@ void				move_keys(t_cub3d *data);
 void				arrow_keys(t_cub3d *data);
 void				update_player_coordinates(t_cub3d *data);
 int					key_release_handler(int key, t_cub3d *data);
+
+// ray
+
+void				grid_to_pixel(t_cub3d *data);
+bool				is_in_map(t_cub3d *data, double x, double y);
+bool				is_not_wall(t_cub3d *data, double x, double y);
+void				update_position(double *x, double *y, double angle, \
+					double distance);
 
 #endif

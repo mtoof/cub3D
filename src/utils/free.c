@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: eemuston <eemuston@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:39:35 by eemuston          #+#    #+#             */
-/*   Updated: 2023/09/27 12:53:23 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/02 12:18:25 by eemuston         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	free_texture(t_cub3d *data)
 	i = 0;
 	while (i < 2)
 	{
-		free(data->colors[i].color);
+		if (data->colors[i].color)
+			free(data->colors[i].color);
 		data->colors[i].color = NULL;
 		i++;
 	}
