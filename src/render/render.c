@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:34:34 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/07 17:11:02 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/09 18:49:43 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,25 @@ double	degree_to_rad(double angle)
 
 void	render_background(t_cub3d *data)
 {
+	int	color;
 	int	y;
 	int	x;
-	int	color;
 
-	color = data->ceil_color;
-	y = -1;
-	while (++y < HEIGHT)
+	color = 0;
+	y = 0;
+	while (y < HEIGHT)
 	{
-		x = -1;
-		if (y == HEIGHT / 2)
-			color = data->floor_color;
-		while (++x < WIDTH)
+		x = 0;
+		while (x < WIDTH)
+		{
+			if (y < HEIGHT / 2)
+				color = data->ceil_color;
+			else
+				color = data->floor_color;
 			my_mlx_pixel_put(data, x, y, color);
+			x++;
+		}
+		y++;
 	}
 }
 
@@ -51,30 +57,33 @@ void	draw_2d_direction(t_cub3d *data)
 	dda_algorithm(p1, p2, data, line);
 }
 
-void clear_image(t_cub3d *data)
+void	clear_image(t_cub3d *data)
 {
-	for (int y = 0; y < HEIGHT; y++)
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < HEIGHT)
 	{
-		for (int x = 0; x < WIDTH; x++)
+		x = 0;
+		while (x < WIDTH)
 		{
 			my_mlx_pixel_put(data, x, y, 0x000000);
+			x++;
 		}
+		y++;
 	}
 }
-
 
 void	render_game(t_cub3d *data)
 {
 	clear_image(data);
 	mlx_clear_window(data->mlx_ptr, data->mlx_window);
 	render_background(data);
-	draw_fov(data);
+	ray_casting(data);
 	draw_2d_map(data);
 	draw_2d_player(data);
 	draw_2d_direction(data);
-	printf("player_x: %f\n", data->player->player_x);
-	printf("player_y: %f\n", data->player->player_y);
-	printf("player_angle: %f\n", data->player->player_angle);
-	mlx_put_image_to_window(data->mlx_ptr, \
-		data->mlx_window, data->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->mlx_window, data->img->img_ptr,
+		0, 0);
 }
