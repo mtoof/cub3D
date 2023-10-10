@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/09 17:12:01 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/10 13:58:47 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ static int	check_valid_input(char **splitted_line, t_cub3d *data)
 	i = 0;
 	while (splitted_line[i])
 		i++;
+	if (i == 2 && ft_strncmp(splitted_line[1] + \
+	ft_strlen(splitted_line[1]) - 5,".xpm\n", 5) != 0)
+	{
+		ft_putstr_fd("Error\nNot a xpm file\n", 2);
+		free_texture(data);
+		return (1);
+	}
 	if (i > 2 && (!ft_strncmp(splitted_line[0], "NO", 2)
 			|| !ft_strncmp(splitted_line[0], "EA", 2)
 			|| !ft_strncmp(splitted_line[0], "WE", 2)
@@ -99,11 +106,10 @@ int	read_file_and_parse(char **argv, t_cub3d *data)
 		ft_putstr_fd("Error\nCould not open file.\n", 2);
 		return (1);
 	}
-	if (read_texture_color(data->fd, data) || check_duplicate(data) || \
-		check_texture_path(data, 0) || check_valid_color(data) || \
-		get_raw_map(data, data->fd) || \
-		check_amount_player(data->raw_map, 0, data) || \
-		valid_map(data))
+	if (read_texture_color(data->fd, data) || check_duplicate(data) \
+		|| check_texture_path(data, 0) || check_valid_color(data) \
+		|| get_raw_map(data, data->fd) || \
+		check_amount_player(data->raw_map, 0, data) || valid_map(data))
 		return (1);
 	return (0);
 }
