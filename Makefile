@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/06 12:17:00 by atoof             #+#    #+#              #
-#    Updated: 2023/09/26 12:12:27 by vvu              ###   ########.fr        #
+#    Created: 2023/10/09 19:06:14 by vvu               #+#    #+#              #
+#    Updated: 2023/10/09 19:20:21 by vvu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,28 +17,29 @@ VALID_DIR = src/check_validity/
 ERROR_DIR = src/error_checking/
 FLOODFILL_DIR = src/flood_fill/
 READ_MAP_DIR = src/read_map/
-INIT_WINDOW_DIR = src/init_window/
+RENDER_DIR = src/render/
 KEY_EVENTS_DIR = src/key_events/
 SRC =	main.c
 VALID = check_valid_color.c validity_utils.c valid_map.c
 ERROR =  errors.c 
-UTILS =  free.c ft_atoll.c init_data.c ft_split_spaces.c angle_utils.c
+UTILS =  free.c ft_atoll.c init_data.c ft_split_spaces.c
 FLOODFILL = flood_fill_algorithm.c flood_fill_utils.c
 READ_MAP = read_file_and_parse.c texture_color_init.c get_raw_map_util.c get_raw_map.c \
 			color_init_utils.c init_player_position.c
-INIT_WINDOW = init_window.c image_handler.c mini_map.c render.c bresenham.c
+RENDER = init_window.c image_handler.c mini_map.c render.c ray_casting.c dda_algorithm.c \
+				utils.c draw_walls.c
 KEY_EVENTS = key_handler.c key_utils.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC)) $(addprefix $(VALID_DIR), $(VALID)) \
 		$(addprefix $(ERROR_DIR), $(ERROR)) $(addprefix $(FLOODFILL_DIR), $(FLOODFILL)) \
 		$(addprefix $(READ_MAP_DIR), $(READ_MAP)) $(addprefix $(UTILS_DIR), $(UTILS)) \
-		$(addprefix $(INIT_WINDOW_DIR), $(INIT_WINDOW)) $(addprefix $(KEY_EVENTS_DIR), $(KEY_EVENTS))
+		$(addprefix $(RENDER_DIR), $(RENDER)) $(addprefix $(KEY_EVENTS_DIR), $(KEY_EVENTS))
 HEADER_DIR = header/
 HEADER = cub3d.h
 OBJ_DIR = obj/
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 LIBFT = ./libft/libft.a
 FLAGS = -Wall -Werror -Wextra
-ERROR_FLAGS = -fsanitize=address -g #-static-libsan -fno-omit-frame-pointer -overflow
+ERROR_FLAGS = -fsanitize=address -g -static-libsan -fno-omit-frame-pointer -overflow
 EXTRA_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 BOLD = \033[1m
@@ -58,7 +59,7 @@ $(NAME): $(OBJS)
 		else \
 			echo "$(YELLOW)$(BOLD)Compiling $(NAME)...$(NC)"; \
 			make -C ./libft; \
-			cc $(FLAGS) $(EXTRA_FLAGS) $(OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@ ; \
+			cc $(FLAGS) $(EXTRA_FLAGS) $(ERROR_FLAGS) $(OBJS) -I$(HEADER_DIR) $(LIBFT) -o $@ ; \
 			echo "$(GREEN)$(BOLD)$(NAME) successfully compiled!$(NC)"; \
 		fi
 $(OBJ_DIR)%.o: %.c $(HEADER_DIR)$(HEADER)
