@@ -2,7 +2,6 @@ At the moment we have not include the mlx library in the repo yet. So you need m
 
 https://github.com/kieubo90/cub3D/assets/88286643/4342f75d-facf-4dd6-a30e-ff9f485b26d4
 
-🔗 [Watch more projects on my channel](https://www.youtube.com/@vuphong3349/videos)
 
 🎯 Project Aim: Elevating Dimensions with the Ray Casting Technique
 
