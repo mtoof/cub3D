@@ -1,3 +1,5 @@
+At the moment we have not include the mlx library in the repo yet. So you need mlx library and adjust the Makefile to compile with the mlx directory to run this project.
+
 🎯 Project Aim: Elevating Dimensions with the Ray Casting Technique
 
 🔗 [Watch Our Progress Here](https://www.youtube.com/watch?v=ZyX530yEeek)
