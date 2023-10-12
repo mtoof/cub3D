@@ -1,5 +1,7 @@
 At the moment we have not include the mlx library in the repo yet. So you need mlx library and adjust the Makefile to compile with the mlx directory to run this project.
 
+https://github.com/kieubo90/cub3D/assets/88286643/4342f75d-facf-4dd6-a30e-ff9f485b26d4
+
 🎯 Project Aim: Elevating Dimensions with the Ray Casting Technique
 
 🔗 [Watch more projects on my channel](https://www.youtube.com/@vuphong3349/videos)
