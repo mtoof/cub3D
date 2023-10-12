@@ -6,7 +6,7 @@
 /*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:05:53 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/10 17:47:51 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/12 14:12:52 by vvu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_texture(t_cub3d *data)
 	i = -1;
 	while (++i < 2)
 	{
-		if (data->colors[i].color)
+		if (data->colors[i].color != NULL)
 			free(data->colors[i].color);
 		data->colors[i].color = NULL;
 	}
@@ -55,6 +55,7 @@ void	free_texture(t_cub3d *data)
 	if (data->raw_map != NULL)
 		free_array(data->raw_map);
 	free(data->img);
+	free(data->mini_img);
 	free(data->player);
 	free(data->ray);
 	close(data->fd);
@@ -87,6 +88,7 @@ void	destroy_image(t_cub3d *data)
 
 	i = -1;
 	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
-	while (++i < 4)
+	mlx_destroy_image(data->mlx_ptr, data->mini_img->img_ptr);
+	while (++i < 4 && data->texture[i].img != NULL)
 		mlx_destroy_image(data->mlx_ptr, data->texture[i].img);
 }
