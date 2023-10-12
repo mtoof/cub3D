@@ -2,7 +2,7 @@ At the moment we have not include the mlx library in the repo yet. So you need m
 
 🎯 Project Aim: Elevating Dimensions with the Ray Casting Technique
 
-🔗 [Watch Our Progress Here](https://www.youtube.com/watch?v=ZyX530yEeek)
+🔗 [Watch more projects on my channel](https://www.youtube.com/@vuphong3349/videos)
 
 Welcome to our innovative project, where we ambitiously venture into the realm of graphical transformation, converting 2D visuals into immersive 3D experiences by harnessing the power of the Ray Casting technique. This project is not merely a demonstration of graphical conversion but a testament to the seamless integration of mathematical computations and graphical rendering to create a visually stunning and interactive 3D environment from a 2D base.
 
