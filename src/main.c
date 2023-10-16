@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	data;
 
-	if (init_data(&data))
-		return (1);
 	if (error_check(argc, argv) == 1)
+		return (1);
+	if (init_data(&data))
 		return (1);
 	if (read_file_and_parse(argv, &data) == 1)
 		return (1);
