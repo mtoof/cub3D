@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file_and_parse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:29:36 by mtoof             #+#    #+#             */
-/*   Updated: 2023/10/10 17:35:07 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/27 20:56:29 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,8 @@ static int	read_texture_color(int fd, t_cub3d *data)
 	return (0);
 }
 
-int	read_file_and_parse(char **argv, t_cub3d *data)
+int	read_file_and_parse(t_cub3d *data)
 {
-	data->fd = open(argv[1], O_RDONLY);
-	if (data->fd == -1)
-	{
-		ft_putstr_fd("Error\nCould not open file.\n", 2);
-		return (1);
-	}
 	if (read_texture_color(data->fd, data) || check_duplicate(data) || \
 		check_texture_path(data, 0) || check_valid_color(data) || \
 		get_raw_map(data, data->fd) || \

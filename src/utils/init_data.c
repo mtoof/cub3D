@@ -6,7 +6,7 @@
 /*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:06:01 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/11 15:01:55 by mtoof            ###   ########.fr       */
+/*   Updated: 2023/10/27 21:03:39 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	init_data(t_cub3d *data)
 	data->found_zero = 0;
 	data->width = 0;
 	data->height = 0;
-	data->fd = 0;
 	data->player_number = 0;
 	data->raw_map = NULL;
 	data->map = NULL;

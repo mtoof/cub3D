@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvu <vvu@student.hive.fi>                  +#+  +:+       +#+        */
+/*   By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:59:59 by vvu               #+#    #+#             */
-/*   Updated: 2023/10/12 14:02:32 by vvu              ###   ########.fr       */
+/*   Updated: 2023/10/27 20:56:48 by mtoof            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ char				**ft_split_spaces(char *str);
 int					init_data(t_cub3d *data);
 
 // read_map:
-int					read_file_and_parse(char **argv, t_cub3d *data);
+int					read_file_and_parse(t_cub3d *data);
 int					check_splitptr_len(char **splitted_line);
 char				*join_splitted_line(char **splitted_line);
 int					check_texture_path(t_cub3d *data, int current);
