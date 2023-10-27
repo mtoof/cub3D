@@ -1,7 +1,9 @@
 Please don't copy the code if you are trying to do the 42 school project.
 
 The goal of ``cub3d`` is to make a small playable game using raycasting (like [Wolfenstein 3D](https://fr.wikipedia.org/wiki/Wolfenstein_3D)).
-https://github.com/kieubo90/cub3D/assets/88286643/4342f75d-facf-4dd6-a30e-ff9f485b26d4
+
+[(https://github.com/kieubo90/cub3D/assets/88286643/4342f75d-facf-4dd6-a30e-ff9f485b26d4](https://github.com/kieubo90/cub3D/assets/88286643/4342f75d-facf-4dd6-a30e-ff9f485b26d4)
+
 
 ## Subject request
 The subject asked us to make a small playable game. It has mandatory and Bonus part. We have decided to include the Bonus part in mandatory part in this repository.
