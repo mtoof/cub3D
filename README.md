@@ -1,28 +1,34 @@
-At the moment we have not include the mlx library in the repo yet. So you need mlx library and adjust the Makefile to compile with the mlx directory to run this project.
+Please don't copy the code if you are trying to do the 42 school project.
 
+The goal of ``cub3d`` is to make a small playable game using raycasting (like [Wolfenstein 3D](https://fr.wikipedia.org/wiki/Wolfenstein_3D)).
 https://github.com/kieubo90/cub3D/assets/88286643/4342f75d-facf-4dd6-a30e-ff9f485b26d4
 
+## Subject request
+The subject asked us to make a small playable game. It has mandatory and Bonus part. We have decided to include the Bonus part in mandatory part in this repository.
+The player must be able to move and the rendering must be smooth.
+For the Bonus you should handle Wall collisions, a minimap system, doors which can open and close, animated sprite and rotate the point of view with the mouse.
 
-🎯 Project Aim: Elevating Dimensions with the Ray Casting Technique
+I believe this project has several challenges
 
-Welcome to our innovative project, where we ambitiously venture into the realm of graphical transformation, converting 2D visuals into immersive 3D experiences by harnessing the power of the Ray Casting technique. This project is not merely a demonstration of graphical conversion but a testament to the seamless integration of mathematical computations and graphical rendering to create a visually stunning and interactive 3D environment from a 2D base.
+1. Finding the right way to extract the cub information, How to do it?
+	1. Read the first 6 lines and check for data validity.
+	2. Continue with reading the rest of the .cub file and keep it in a data structure.
+1. Map validity, How to do it?
+	1. Be aware of spaces. the space can't be inside the map, the space must be srounded by walls or use the space for connection between 1 and the map must be srounded by walls.
+	1. The map itselt composed of only 6 charachters 'W' 'S' 'E' 'N' '0' '1'.
+	1. You might need to read about floodfill algorithm to check for 3 things:
+    - Is the map srounded by wall?
+    - Is the player or '0' exist outside of the map?
+    - Is there any '0' or player exposed to space?
+1. Using and understanding the minilibx drawing tool.
+1. Understanding raycasting and the DDA algorithm.
 
-🚀 Embarking on a 3D Journey
 
-The journey from 2D to 3D is a meticulous process, involving intricate calculations, understanding light physics, and implementing precise algorithms to ensure that the transformation is not only visually appealing but also technically sound. Ray Casting, a technique that involves sending rays from a point (the camera) into a scene to detect collisions and render objects, plays a pivotal role in this transformation. Our implementation of this technique ensures that the 3D environment is rendered with accurate perspectives, providing a genuine spatial experience.
+## External resources
 
-🎨 Art Meets Technology
-
-In this project, art and technology intertwine to create a symphony of pixels that dance in three-dimensional space, providing a rich, immersive user experience. The 2D version, while simplistic, serves as the foundation upon which complex algorithms work their magic, casting rays that breathe life into a static image, morphing it into a vibrant 3D space.
-
-🛠️ Technical Proficiency and Challenges
-
-Navigating through the challenges of implementing the Ray Casting technique, we encountered and solved numerous problems related to computational efficiency, accurate distance calculations, and realistic rendering. The technical proficiency demonstrated in this project extends beyond mere coding capabilities, reflecting a deep understanding of computer graphics, algorithmic optimizations, and software engineering principles.
-
-🤝 Collaboration and Learning
-
-This project, while a technical endeavor, has also been a journey of collaborative learning and knowledge sharing. Our team, comprising individuals with diverse skills and expertise, worked cohesively to divide, conquer, and navigate through the myriad of challenges encountered during development. Through consistent communication, mutual learning, and collective problem-solving, we ensured that the project not only reached but exceeded our initial expectations.
-
-🌐 Global Reach and Future Prospects
-
-While our project has achieved significant milestones, we envision it reaching global developers and enthusiasts, serving as a learning platform and inspiration for future 3D rendering projects. We invite developers, graphic designers, and 3D modeling enthusiasts to explore, contribute, and collaborate, ensuring that the project evolves and continues to push the boundaries of what's possible in 3D rendering.
++ [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html)
++ [Bresenham's line algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm)
++ [Flood fill algorithm](https://en.wikipedia.org/wiki/Flood_fill)
++ [MiniLibX documentation by Gontjarow](https://gontjarow.github.io/MiniLibX/)
++ [MiniLibX documentation by Harm Smits](https://harm-smits.github.io/42docs/)
++ [42docs](https://harm-smits.github.io/42docs/projects/cub3d)
